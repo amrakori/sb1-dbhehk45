@@ -1,0 +1,78 @@
+/* Print-specific styles */
+@media print {
+  /* Reset all margins and padding */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Hide non-printable elements */
+  .no-print {
+    display: none !important;
+  }
+
+  /* Minimal page margins */
+  @page {
+    size: auto;
+    margin: 0.25cm;
+  }
+
+  /* Container for cards */
+  .print-container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    gap: 0.5rem;
+    padding: 0.25rem;
+  }
+
+  /* Grid layouts based on cards per page */
+  .print-grid-1 {
+    grid-template-columns: 1fr;
+  }
+
+  .print-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .print-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  .print-grid-6 {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  .print-grid-9 {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  /* Individual card styling */
+  .bingo-card {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Scale card content to fit available space */
+  .card {
+    transform-origin: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Force background colors and shadows in printing */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
